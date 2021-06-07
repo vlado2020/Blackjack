@@ -8,35 +8,80 @@ function randomNumber(){
 }
 
 
+let cards = []
 
-let firstCard;
-let secondCard;
-let sum = firstCard + secondCard
+let firstCard = randomNumber()
+cards.push(firstCard)
+
+let secondCard = randomNumber();
+cards.push(secondCard)
+
+
+if(cards.length === 0){
+let firstCard = randomNumber()
+cards.push(firstCard)
+
+let secondCard = randomNumber();
+cards.push(secondCard)
+console.log(cards)
+}
+
+let sum = firstCard + secondCard;
+
 let hasBlackJack = false
 let isAlive = true;
 let messageEl = document.getElementById("message-el")
-console.log(messageEl)
+let sumEl = document.getElementById("sum-el")
+let cardEl = document.getElementById("card-el")
+let newEl = document.getElementById("new-el")
+
+
 
 
 function startGame(){
-let firstCard = randomNumber();
-let secondCard =randomNumber();
-let sum = firstCard + secondCard
+    renderGame()
+}
+
+function renderGame(){
+
+cardEl.textContent = "Karte: "
+for(let i = 0; i < cards.length; i++){
+    cardEl.textContent += cards[i] + " \n "
+}
 if(sum <= 20) {
     console.log(firstCard, secondCard, sum)
     message = "Želiš li izvući još jednu kartu?"
 }else if(sum === 21){
     message = "Bravo! Dobili ste BlackJack (Ajnc)"
     hasBlackJack = true;
+    setTimeout(function (){clearAll() }, 3000);
 }else if( sum > 21){
     message = "Ispali ste iz igre"
     isAlive = false;
+    setTimeout(function (){clearAll() }, 3000);
 }
 
 // Cash out!
+    messageEl.textContent = message;
+    sumEl.textContent = "Zbroj: " + sum
+}
 
-console.log(message)
+function newCard(){
+    let newCard  = randomNumber();
+    sum += newCard
+    cards.push(newCard)
+    console.log(cards);
+    newEl.textContent = "Nova karta: " + newCard
+    renderGame()
+    // Cash out!
 }
 
 
-// document.getElementById("suma").innerHTML = sum;
+function clearAll(){
+    cards.length = 0;
+    sum = 0;
+    sumEl.textContent = "Zbroj: "
+    cardEl.textContent = `Karte: `
+    newEl.textContent = 'Nova karta '
+}
+
