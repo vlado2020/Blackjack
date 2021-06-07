@@ -8,17 +8,35 @@ function randomNumber(){
 }
 
 
-let firstCard = randomNumber()
-let secondCard = randomNumber()
+
+let firstCard;
+let secondCard;
 let sum = firstCard + secondCard
 let hasBlackJack = false
+let isAlive = true;
+let messageEl = document.getElementById("message-el")
+console.log(messageEl)
 
+
+function startGame(){
+let firstCard = randomNumber();
+let secondCard =randomNumber();
+let sum = firstCard + secondCard
 if(sum <= 20) {
-    console.log("Želiš li izvući još jednu kartu?")
+    console.log(firstCard, secondCard, sum)
+    message = "Želiš li izvući još jednu kartu?"
 }else if(sum === 21){
-    console.log("Bravo! Dobili ste BlackJack (Ajnc)")
+    message = "Bravo! Dobili ste BlackJack (Ajnc)"
+    hasBlackJack = true;
 }else if( sum > 21){
-    console.log("Ispali ste iz igre")
+    message = "Ispali ste iz igre"
+    isAlive = false;
 }
 
-document.getElementById("suma").innerHTML = sum;
+// Cash out!
+
+console.log(message)
+}
+
+
+// document.getElementById("suma").innerHTML = sum;

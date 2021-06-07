@@ -7,17 +7,20 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="index.css">
     </head>
     <body>
         <h1> BlackJack</h1>
-         
-        <button>Želim novu kartu</button>
-        <p id='novakarta'></p>
-        <hr>
-        <p id='suma'></p>
 
-        
+        <button>Želim novu kartu</button>
+        <p id="message-el">Želite li odigrati rundu?</p>
+        <p id='novakarta'>Karte: </p>
+        <hr>
+        <p id='suma'>Zbroj: </p>
+
+      <button onclick="startGame()"> Pokreni igru</button>
+
+
         <script src="index.js" async defer></script>
     </body>
 </html>
