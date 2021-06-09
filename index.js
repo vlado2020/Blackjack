@@ -4,7 +4,7 @@
 function randomNumber(){
     let min = 2;
     let max = 12;
-    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+    return Math.floor(Math.random() * 13 ) + 1; //The maximum is exclusive and the minimum is inclusive
 }
 
 
