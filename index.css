@@ -8,7 +8,13 @@ body {
 }
 
 h1 {
-    color: goldenrod;
+        font-weight: bold;
+        font-size: 64px;
+        color: black;
+        -webkit-text-fill-color: rgb(230, 48, 48); /* Will override color (regardless of order) */
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: black;
+
 }
 
 #message-el {

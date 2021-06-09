@@ -70,7 +70,7 @@ function renderGame() {
     } else if (sum === 21) {
         message = "Bravo! Dobili ste BlackJack (Ajnc)"
         hasBlackJack = true;
-        setTimeout(function () { clearAll() }, 2000);
+        setTimeout(function () { clearAll() }, 5000);
     } else if (sum > 21) {
         message = "Ispali ste iz igre"
         isAlive = false;
@@ -98,5 +98,6 @@ function clearAll() {
     sumEl.textContent = "Zbroj: "
     cardEl.textContent = `Karte: `
     newEl.textContent = 'Nova karta: '
+    messageEl.textContent ='Odigrajmo novu partiju Ajnca:)'
 }
 
