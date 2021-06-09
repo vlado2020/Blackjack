@@ -22,7 +22,7 @@ function randomNumber() {
     }
 }
 
-
+let count = 100;
 let cards = []
 let sum = 0;
 let hasBlackJack = false
@@ -32,6 +32,7 @@ let sumEl = document.getElementById("sumEl")
 let cardEl = document.getElementById("cardEl")
 let newEl = document.getElementById("newEl")
 let convertAce = document.getElementById("convertAce")
+let zetoni = document.getElementById("zetoni")
 
 
 function convertAceToOne(){
@@ -54,7 +55,14 @@ function startGame() {
     cards.push(secondCard)
 
    sum = cards.reduce((partial_sum, a) => partial_sum + a,0);
-    renderGame()
+   zetoni.textContent = count + " kuna."
+   if(count > 0){
+       renderGame()
+   }else{
+    message = "Nema igranja na kredit!"
+    messageEl.textContent = message;
+   }
+   
 }
 
 function renderGame() {
@@ -70,17 +78,19 @@ function renderGame() {
     } else if (sum === 21) {
         message = "Bravo! Dobili ste BlackJack (Ajnc)"
         hasBlackJack = true;
-        setTimeout(function () { clearAll() }, 5000);
+        count += 100
+        setTimeout(function () { clearAll() }, 3000);
     } else if (sum > 21) {
         message = "Ispali ste iz igre"
         isAlive = false;
+        count -= 20
         setTimeout(function (){clearAll() }, 2000);
     }
     messageEl.textContent = message;
 }
 
 function newCard() {
-    if( isAlive === true && hasBlackJack === false){
+    if( count >0 && isAlive === true && hasBlackJack === false){
   let newCard = randomNumber();
     sum += newCard
     cards.push(newCard)
@@ -92,7 +102,9 @@ function newCard() {
 
 
 function clearAll() {
+    zetoni.textContent = count + " kuna."
     isAlive = false;
+    hasBlackJack = false;
     cards.length = 0;
     sum = 0;
     sumEl.textContent = "Zbroj: "
